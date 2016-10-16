@@ -45,10 +45,7 @@
             })
                
             $urlRouterProvider.otherwise("/app/home");
-            $ionicConfigProvider.tabs.position('bottom');   
+            $ionicConfigProvider.tabs.position('bottom');
+            $ionicConfigProvider.vi
         });
-    //.controller('NavCtrl', function($scope, $ionicSideMenuDelegate) {
-    //    $scope.showMenu = function () {
-    //        $ionicSideMenuDelegate.toggleLeft();
-    //    }
 })();
