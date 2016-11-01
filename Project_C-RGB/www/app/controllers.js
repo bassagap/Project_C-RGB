@@ -1,7 +1,7 @@
 ﻿(function () {
     "use strict";
 
-    angular.module("myapp.controllers", [])
+    angular.module("myapp.controllers", ['ionic', 'backand'])
 
     .controller("appCtrl", ["$scope", function ($scope) {
     }])
@@ -12,15 +12,38 @@
             //refresh binding
             $scope.$broadcast("scroll.refreshComplete");
         };
-    }])
-.controller('NavCtrl', function ($scope, $ionicSideMenuDelegate) {
-    $scope.showMenu = function () {
+     }])
+    .controller('NavCtrl', function ($scope, $ionicSideMenuDelegate) {
+        $scope.showMenu = function () {
         $ionicSideMenuDelegate.toggleLeft();
-    };
-    $scope.showRightMenu = function () {
+        };
+        $scope.showRightMenu = function () {
         $ionicSideMenuDelegate.toggleRight();
-    };
-})
+        };
+    })
+    .controller('ExercicesCtrl', function ($scope, ExercicesService) {
+        $scope.exercices = [];
+        $scope.input = {};
+
+        function getAllExercices() {
+            ExercicesService.getExercices().then(function (result) {
+                $scope.exercices = result.data.data;
+            });
+
+        }
+        $scope.addExercice = function () {
+            ExercicesService.addExercice($scope.input).then(function (result) {
+                $scope.input = {};
+                getAllExercices();
+            });
+        }
+        $scope.deleteExercice = function (id) {
+            ExercicesService.deleteExercice(id).then(function (result) {
+                getAllExercices();
+            });
+        }
+        getAllExercices();
+    })
     //errorCtrl managed the display of error messages bubbled up from other controllers, directives, myappService
     .controller("errorCtrl", ["$scope", "myappService", function ($scope, myappService) {
         //public properties that define the error message and if an error is present
