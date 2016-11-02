@@ -9,10 +9,12 @@
 
 </head>
 <body>
-    <div class="bar bar-header bar-assertive" ng-controller="errorCtrl" ng-show="activeError" style="z-index: 1000">
+
+    <!-- Should we remove this in order to avoid the error status at the begining? -->
+     <div class="bar bar-header bar-assertive" ng-controller="errorCtrl" ng-show="activeError" style="z-index: 1000">
         <h1 class="title">Error: {{error}}</h1>
         <button class="button icon ion-close-round" ng-click="dismissError()"></button>
-    </div>
+    </div> 
     <ion-nav-view></ion-nav-view>
     <div class="spinner">
         <ion-spinner icon="android" class="spinnerSpinner"></ion-spinner>

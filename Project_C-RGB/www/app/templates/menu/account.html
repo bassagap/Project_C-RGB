@@ -1,33 +1,29 @@
 ﻿<!DOCTYPE html>
 <!--15.10.2016: Bassagap new template-->
-
+<!--01.11.2016: Bassagap added Patient handling on user account. Needs to be fixed, still is not creating patients-->
 <ion-view>
     <!-- Header -->
     <div class="bar bar-header bar-dark">
         <h1 class="title">User Account</h1>
+        <a href="#/home"><button class="button button-icon icon ion-android-arrow-back"></button></a>
     </div>
 
     <!-- Content -->
     <ion-content class="has-header has-tabs" has-bouncing="true" style="background: url(images/SHUhHUNR7inKgnovJg7A_Capture2.PNG ) no-repeat center; background-size: cover;">
         <div class="list">
             <label class="item item-input item-stacked-label">
-                <span class="input-label">Name</span>
-                <!--<input type="text" placeholder="Heroe name" ng-model="newHeroe.name">-->
+                <span class="input-label"></span>
+                <input type="text" placeholder="Patient Name" ng-model="newPatient.name">
             </label>
             <label class="item item-input item-stacked-label">
-                <span class="input-label">Image url</span>
-                <!--<input type="text" ng-model="newHeroe.thumbnail.filename">-->
-            </label>
-            <label class="item item-input item-stacked-label">
-                <span class="input-label">Description</span>
-                <!--<input type="text" placeholder="History" ng-model="newHeroe.description">-->
+                <span class="input-label"></span>
+                <input type="text" placeholder="Patient Surname" ng-model="newPatient.surname">
             </label>
         </div>
         <div class="padding">
-            <!--<button class="button button-block button-positive" ng-click="create()">
+            <button class="button button-block button-positive" ng-click="create()">
                 Create
-            </button>-->
+            </button>
         </div>
     </ion-content>
 </ion-view>
-

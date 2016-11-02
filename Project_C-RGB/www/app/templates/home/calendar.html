@@ -1,13 +1,14 @@
 ﻿<!DOCTYPE html>
 <!--15.10.2016: Bassagap new template-->
-<html>
+<!--01.11.2016: Adding actual exercices, still not working. -->
+
 <head>
-    <title>calendartrfdgvfc</title>
+    <title></title>
 </head>
-<body ng-app="myapp" ng-controller="ExercicesCtrl">
+<body ng-app="myapp" ng-controller="ExerciceCtrl">
     <ion-header-bar class="bar-positive">
         <h1 class="title">
-            ToDoAppBassagap
+            Exercice App Bassagap
         </h1>
     </ion-header-bar>
 
@@ -24,8 +25,8 @@
         <ion-list can-swipe="true">
             <ion-item ng-repeat="item in exercices">
                 {{item.name}}
-                <ion-option-button class="button-assertive" ng-click="deleteExercice(item.id)">
-                    Delete
+                <ion-option-button class="button-assertive" ng-click="deleteExercices(item.id)">
+                    Delete Exercices
                 </ion-option-button>
             </ion-item>
         </ion-list>

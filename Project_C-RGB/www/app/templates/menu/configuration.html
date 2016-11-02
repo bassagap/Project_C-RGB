@@ -1,54 +1,34 @@
 ﻿<!DOCTYPE html>
 <!-- [16.10.2016] bassagap: added new template to englobe the configuration options of the exercices de patient has to perform
                   bassagap: added options for the items on the list, now it is possible to chose if an exercice shall be performed daily, weekly or monthly-->
+<!-- [01.11.2016] bassagap: display the exercices from the factory into a list which allows to select per exercice the periodicity-->
+
+
+
 <ion-view>
     <!-- Header -->
     <div class="bar bar-header bar-dark">
-        <h1 class="title">User Account</h1>
+        <h1 class="title">Configuration</h1>
+            <a href="#/home"><button class="button button-icon icon ion-android-arrow-back"></button></a>
+
     </div>
-    <ion-content class="has-header has-tabs" has-bouncing="true" style="background: url(images/9UBAUgEMR0GmBsoXzY6V_Capture4.PNG) no-repeat center; background-size: cover;">
-        <ion-list>
-            <ion-list can-swipe="true">
-                <ion-list-header class="bar-header">
-                    <h5>CONFIGURE THE EXERCICES</h5>
-                </ion-list-header>
+    
+    <!-- Content --> 
+    <ion-content class="has-header" has-bouncing="true" style="background: url(images/9UBAUgEMR0GmBsoXzY6V_Capture4.PNG) no-repeat center; background-size: cover;">
+        <div class="list">
+            <a ng-repeat="exercice in exercices " class="item item-thumbnail-left">
+                <h2>{{exercice.name}}</h2>
+                <select ng-model="exercice.periodicity">
+                    <option>None</option>
+                    <option>Daily</option>
+                    <option>Weekly</option>
+                    <option>Monthly</option>
+                </select>
 
+            </a>
+        </div>
+     </ion-content>
+    
+    <!-- Tabs
 
-                <!--<div class="list">-->
-
-                    <!--<label class="item item-input item-select">
-                        <div class="input-label">
-                            Exercice 1
-                        </div>
-                        <select>
-                            <option>None</option>
-                            <option selected>Daily</option>
-                            <option>Weekly</option>
-                            <option>Monthly</option>
-                        </select>
-                    </label>-->  
-                                                                                    
-                <!--</div>-->  
-                Hello
-                <ion-item ng-repeat="item in exercices">
-                    {{item.name}}
-                    Hello
-                    <ion-option-button class="button-assertive" ng-click="deleteExercice(item.id)">
-                        Delete
-                    </ion-option-button>
-                </ion-item>
-                             
-            </ion-list>
-        </ion-list>
-    </ion-content>
 </ion-view>
-
-
-<!--<ion-list can-swipe="true">
-    <ion-item ng-repeat="item in todos">
-        {{item.name}}
-        <ion-option-button class="button-assertive" ng-click="deleteTodo(item.id)">
-            Delete
-        </ion-option-button>
-    </ion-item>
-    </ion-list>-->

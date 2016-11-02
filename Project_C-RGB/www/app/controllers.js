@@ -1,9 +1,11 @@
 ﻿(function () {
+    //[01.11.2016] bassagap: New controllers for Exercices (ExercicesCtrl) and patients (PatientsCtrl)
     "use strict";
 
     angular.module("myapp.controllers", ['ionic', 'backand'])
 
     .controller("appCtrl", ["$scope", function ($scope) {
+  
     }])
 
     //homeCtrl provides the logic for the home screen
@@ -11,6 +13,7 @@
         $scope.refresh = function () {
             //refresh binding
             $scope.$broadcast("scroll.refreshComplete");
+    
         };
      }])
     .controller('NavCtrl', function ($scope, $ionicSideMenuDelegate) {
@@ -21,28 +24,31 @@
         $ionicSideMenuDelegate.toggleRight();
         };
     })
-    .controller('ExercicesCtrl', function ($scope, ExercicesService) {
-        $scope.exercices = [];
-        $scope.input = {};
+    .controller('ExercicesCtrl', function ($scope, Exercices) {
+        $scope.exercices = Exercices.all();
 
-        function getAllExercices() {
-            ExercicesService.getExercices().then(function (result) {
-                $scope.exercices = result.data.data;
-            });
+    })
+
+    .controller('PatientsCtrl', function ($scope, $location, Exercices) {
+        $scope.patients = Patients.all();
+
+        $scope.newPatient = {
+            "id": 200000,
+            "name": "",
+            "surname": "",
+            "birthdate": "2016-12-31T19:00:00-0500",
+            "lesion": ""
+        };
+        
+
+        $scope.create = function () {
+
+            $scope.newPatient.id++;
+            Patients.add($scope.newPatient);
+            $location.path('/sensors');
 
         }
-        $scope.addExercice = function () {
-            ExercicesService.addExercice($scope.input).then(function (result) {
-                $scope.input = {};
-                getAllExercices();
-            });
-        }
-        $scope.deleteExercice = function (id) {
-            ExercicesService.deleteExercice(id).then(function (result) {
-                getAllExercices();
-            });
-        }
-        getAllExercices();
+
     })
     //errorCtrl managed the display of error messages bubbled up from other controllers, directives, myappService
     .controller("errorCtrl", ["$scope", "myappService", function ($scope, myappService) {
