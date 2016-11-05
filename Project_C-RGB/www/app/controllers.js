@@ -29,26 +29,31 @@
 
     })
 
-    .controller('PatientsCtrl', function ($scope, $location, Exercices) {
-        $scope.patients = Patients.all();
-
+    .controller('CreatePatientsCtrl', function ($scope, $location, Patients) {
         $scope.newPatient = {
             "id": 200000,
             "name": "",
             "surname": "",
             "birthdate": "2016-12-31T19:00:00-0500",
             "lesion": ""
-        };
-        
+        };     
 
         $scope.create = function () {
-
             $scope.newPatient.id++;
             Patients.add($scope.newPatient);
             $location.path('/sensors');
-
         }
-
+    })
+    .controller("PatientCtrl", function($scope, Patients) {
+            $scope.patients = Patients.all();
+    })
+    .controller("Sensorsctrl", function ($scope, $ionicPopup) {
+        $scope.showAlert = function () {
+            var alertPopup = $ionicPopup.alert({
+                title: "Sensors Connection",
+                template: "Sensors have been correctly connected"
+            });
+        }
     })
     //errorCtrl managed the display of error messages bubbled up from other controllers, directives, myappService
     .controller("errorCtrl", ["$scope", "myappService", function ($scope, myappService) {

@@ -18,8 +18,6 @@
             });
         })
         .config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider, BackandProvider) {
-            BackandProvider.setAppName('rcgb');
-            BackandProvider.setAnonymousToken('c8331ac0-1ae1-488e-a454-05911a92dcd5');
             $stateProvider
             .state("app", {
                 url: "/app",
@@ -35,29 +33,40 @@
             .state("account", {
                 url: '/account',
                 templateUrl: 'app/templates/menu/account.html',
-                controller: 'PatientsCtrl'
+                controller: 'CreatePatientsCtrl'
             })
             .state("callibration", {
                 url: '/calibration',
-                templateUrl: 'app/templates/menu/calibration.html'
+                templateUrl: 'app/templates/menu/calibration.html',
+                controller: 'PatientCtrl'
             })
             .state("configuration", {
                 url: '/configuration',
                 templateUrl: 'app/templates/menu/configuration.html',
                 controller : 'ExercicesCtrl'
-
             })
             .state("sensors", {
                 url: '/sensors',
-                templateUrl: 'app/templates/menu/sensors.html'
+                templateUrl: 'app/templates/menu/sensors.html',
+                controller: 'Sensorsctrl'
+            })
+            .state("dashboard", {
+                url: '/dashboard',
+                templateUrl: 'app/templates/home/dashboard.html',
+                controller: 'homeCtrl'
             })
 
             .state("calendar", {
                 url: '/calendar',
                 templateUrl: 'app/templates/home/calendar.html',
-
-
+                controller: 'homeCtrl'
             })
+            .state("progress", {
+                url: '/progress',
+                templateUrl: 'app/templates/home/progress.html',
+                controller: 'homeCtrl'
+            })
+
 
             $urlRouterProvider.otherwise("/app/home");
             $ionicConfigProvider.tabs.position('bottom');

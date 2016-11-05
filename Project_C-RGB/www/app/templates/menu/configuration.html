@@ -16,7 +16,7 @@
     <!-- Content --> 
     <ion-content class="has-header" has-bouncing="true" style="background: url(images/9UBAUgEMR0GmBsoXzY6V_Capture4.PNG) no-repeat center; background-size: cover;">
         <div class="list">
-            <a ng-repeat="exercice in exercices " class="item item-thumbnail-left">
+            <ion-toggle ng-repeat="exercice in exercices " class="item item-thumbnail-left" ng-model="exercice.active">
                 <h2>{{exercice.name}}</h2>
                 <select ng-model="exercice.periodicity">
                     <option>None</option>
@@ -24,8 +24,9 @@
                     <option>Weekly</option>
                     <option>Monthly</option>
                 </select>
+                {{exercice.periodicity}}
 
-            </a>
+            </ion-toggle>
         </div>
      </ion-content>
     

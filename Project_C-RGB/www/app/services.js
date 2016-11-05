@@ -23,7 +23,7 @@
             {
                 "id"            : 1, 
                 "name"          : "Exercice 1",
-                "periodicity"   : null, 
+                "periodicity"   : "Weekly", 
                 "startDate"     : "20-10-2016",
                 "endindDate"    : "16-12-2016",
                 "active"        : null   
@@ -47,7 +47,7 @@
             add: function ( exercice){
                 exercices.splice (0, 0, exercice);
             },
-            get: function ( exerciceId){
+            get: function (exerciceId){
                 for (var i = 0; i < exercices.length; i++){
                     if(exercices[i].id === parseInt(exerciceId)){
                     return exercices[i];    
@@ -57,17 +57,10 @@
             }
         }
     })
-    .factory('Patients', function ($filter) {
-          var patients =
-          [
-              {
-                  "id": 1,
-                  "name": null,
-                  "surname": null,
-                  "birthDate": null,
-                  "lesion": null
-              },
-          ];
+    .factory('Patients', function () {
+        var patients = [
+        ];
+
           return {
               all: function () {
                   return patients;
@@ -76,7 +69,7 @@
                   patients.splice(patients.indexOf(patient), 1);
               },
               add: function (patient) {
-                  exercices.splice(0, 0, patient);
+                  patients.push(patient);
               },
               get: function (patientId) {
                   for (var i = 0; i < patients.length; i++) {
