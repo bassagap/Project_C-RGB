@@ -1,19 +1,35 @@
-﻿<!DOCTYPE html>
-<!-- [30.11.2016] bassagap: new ion-view, just fake data -->
+﻿
+<!-- [16.10.2016] bassagap: added new template to englobe the configuration options of the exercices de patient has to perform
+                  bassagap: added options for the items on the list, now it is possible to chose if an exercice shall be performed daily, weekly or monthly-->
+<!-- [01.11.2016] bassagap: display the exercices from the factory into a list which allows to select per exercice the periodicity-->
+
+
+
 <ion-view>
     <!-- Header -->
     <div class="bar bar-header bar-dark">
-        <h1 class="title">Calibration</h1>
-        <a href="#/home"><button class="button button-icon icon ion-android-arrow-back"></button></a>
+        <h1 class="title">Configuration</h1>
+            <a href="#/home"><button class="button button-icon icon ion-android-arrow-back"></button></a>
 
     </div>
-
-    <!-- Content -->
+    
+    <!-- Content --> 
     <ion-content class="has-header" has-bouncing="true" style="background: url(images/9UBAUgEMR0GmBsoXzY6V_Capture4.PNG) no-repeat center; background-size: cover;">
         <div class="list">
-            <a ng-repeat="patient in patients " class="item item-thumbnail-left">
-                <h2>{{patient.name}}</h2>
-            </a>
+            <ion-toggle ng-repeat="exercice in exercices " class="item item-thumbnail-left" ng-model="exercice.active">
+                <h2>{{exercice.name}}</h2>
+                <select ng-model="exercice.periodicity">
+                    <option>None</option>
+                    <option>Daily</option>
+                    <option>Weekly</option>
+                    <option>Monthly</option>
+                </select>
+                {{exercice.periodicity}}
+
+            </ion-toggle>
         </div>
-    </ion-content>
+     </ion-content>
+    
+    <!-- Tabs
+
 </ion-view>
